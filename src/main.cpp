@@ -1004,7 +1004,9 @@ int64_t GetProofOfWorkReward(int64_t nFees, int nHeight)
 int64_t GetProofOfStakeReward(int64_t nCoinAge, int64_t nFees, int nHeight)
 {
 
-    int64_t nSubsidy = 5 * COIN;
+    int64_t nSubsidy;
+
+    nSubsidy = nCoinAge * COIN_YEAR_REWARD * 33 / (365 * 33 + 8);
 
     LogPrint("creation", "GetProofOfStakeReward(): create=%s nCoinAge=%d nHeight=%d\n", FormatMoney(nSubsidy), nCoinAge, nHeight);
 
