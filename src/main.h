@@ -59,9 +59,9 @@ inline bool IsProtocolV2(int nHeight) { return TestNet() || nHeight > 0; }
 inline bool IsProtocolV3(int nHeight) { return TestNet() || nHeight > 1; } //revert back to old difficulty setting, staking problem
 inline bool IsProtocolV4(int nHeight) { return TestNet() || nHeight > 2; } //march 2017 hard fork, future drift adjustments
 
-inline int64_t FutureDriftV1(int64_t nTime) { return nTime + 5 * 60; }
-inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 15; } // Protocol V4
-inline int64_t FutureDriftV4(int64_t nTime, int nHeight) { return nTime + 60 * 60; } // Protocol V4, PoW future drift change
+inline int64_t FutureDriftV1(int64_t nTime) { return nTime + 2 * 60 * 60; }
+inline int64_t FutureDriftV2(int64_t nTime) { return nTime + 2 * 60 * 60; } // Protocol V4
+inline int64_t FutureDriftV4(int64_t nTime, int nHeight) { return nTime + 2 * 60 * 60; } // Protocol V4, PoW future drift change
 inline int64_t FutureDrift(int64_t nTime, int nHeight) { return IsProtocolV4(nHeight) ? FutureDriftV2(nTime) : FutureDriftV1(nTime); }
 
 inline unsigned int GetTargetSpacing(int nHeight) {return 60; }
